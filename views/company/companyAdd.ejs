@@ -1,0 +1,24 @@
+
+<html>
+<head>
+    <title>Add New Company</title>
+</head>
+<body>
+<h1>Add New Company</h1>
+<form action="/company/insert" method="get">
+    company Name: <input id="company_name" name="company_name" type="text" />
+    <br />
+    <br />
+    company
+    <select id="company_id" name="company_id">
+        <% for(var i=0; company.length > i; i++ ) { %>
+        <option value="<%= company[i].company_id %>"><%= company[i].company_name%></option>
+        <% } %>
+    </select>
+
+    <input type="submit" />
+
+</form>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+
+<html>
+<head>
+    <title>Add New Account</title>
+</head>
+<body>
+<h1>Add New Account</h1>
+<form action="/account/insert" method="get">
+    account Name: <input id="account_name" name="account_name" type="text" />
+    <br />
+    <br />
+    account
+    <select id="account_id" name="account_id">
+        <% for(var i=0; account.length > i; i++ ) { %>
+        <option value="<%= account[i].account_id %>"><%= account[i].email + ', ' + account[i].first_name + ', ' +account[i].last_name %></option>
+        <% } %>
+    </select>
+
+    <input type="submit" />
+
+</form>
+</body>
+
+</html>
