@@ -6,15 +6,15 @@
 <body>
 <h1>Add New Address</h1>
 <form action="/address/insert" method="get">
-    address Name: <input id="address_name" name="address_name" type="text" />
+    Street Name: <input id="street" name="street" type="text" />
     <br />
     <br />
-    address
-    <select id="address_id" name="address_id">
-        <% for(var i=0; address.length > i; i++ ) { %>
-        <option value="<%= address[i].address_id %>"><%= address[i].street + ', ' + address[i].zip_code %></option>
-        <% } %>
-    </select>
+    Zip Code: <input id="zip_code" name="zip_code" type="text" />
+    <!--<select id="address_id" name="address_id">-->
+        <!--<% for(var i=0; address.length > i; i++ ) { %>-->
+        <!--<option value="<%= address[i].address_id %>"><%= address[i].street + ', ' + address[i].zip_code %></option>-->
+        <!--<% } %>-->
+    <!--</select>-->
 
     <input type="submit" />
 

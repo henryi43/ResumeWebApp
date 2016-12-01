@@ -5,15 +5,15 @@
 <body>
 <h1>Add New Skill</h1>
 <form action="/skill/insert" method="get">
-    skill Name: <input id="skill_name" name="skill_name" type="text" />
+    Skill Name: <input id="skill_name" name="skill_name" type="text" />
     <br />
     <br />
-    skill
-    <select id="skill_id" name="skill_id">
-        <% for(var i=0; skill.length > i; i++ ) { %>
-        <option value="<%= skill[i].skill_id %>"><%= skill[i].description%></option>
-        <% } %>
-    </select>
+    Description: <input id="description" name="description" type="text" />
+    <!--<select id="skill_id" name="skill_id">-->
+        <!--<% for(var i=0; skill.length > i; i++ ) { %>-->
+        <!--<option value="<%= skill[i].skill_id %>"><%= skill[i].description%></option>-->
+        <!--<% } %>-->
+    <!--</select>-->
 
     <input type="submit" />
 

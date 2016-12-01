@@ -1,6 +1,3 @@
-/**
- * Created by student on 11/16/16.
- */
 var mysql   = require('mysql');
 var db  = require('./db_connection.js');
 
