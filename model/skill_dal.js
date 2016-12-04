@@ -20,3 +20,26 @@ exports.getById = function(skill_id, callback) {
         callback(err, result);
     });
 };
+
+exports.insert = function(params, callback) {
+    var query = 'INSERT INTO Skill (name, description) VALUES (?, ?)';
+
+    // the question marks in the sql query above will be replaced by the values of the
+    // the data in queryData
+    var queryData = [params.name];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+
+}
+
+exports.delete = function(skill_id, callback) {
+    var query = 'DELETE FROM Skill WHERE skill_id = ?';
+    var queryData = [skill_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+
+};

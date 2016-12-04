@@ -52,7 +52,7 @@ router.get('/insert', function(req, res){
     if(req.query.skill_name == null) {
         res.send('skill Name must be provided.');
     }
-    else if(req.query.skill_id == null) {
+    else if(req.query.description == null) {
         res.send('An skill must be selected');
     }
     else {

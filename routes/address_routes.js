@@ -49,10 +49,10 @@ router.get('/add', function(req, res){
 // insert a address record
 router.get('/insert', function(req, res){
     // simple validation
-    if(req.query.address_name == null) {
+    if(req.query.street == null) {
         res.send('address Name must be provided.');
     }
-    else if(req.query.address_id == null) {
+    else if(req.query.zip_code == null) {
         res.send('An address must be selected');
     }
     else {

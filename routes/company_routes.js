@@ -34,17 +34,17 @@ router.get('/', function(req, res){
 });
 
 // Return the add a new company form
-router.get('/add', function(req, res){
-    // passing all the query parameters (req.query) to the insert function instead of each individually
-    company_dal.getAll(function(err,result) {
-        if (err) {
-            res.send(err);
-        }
-        else {
-            res.render('company/companyAdd', {'company': result});
-        }
-    });
-});
+ router.get('/add', function(req, res){
+//     passing all the query parameters (req.query) to the insert function instead of each individually
+     company_dal.getAll(function(err,result) {
+         if (err) {
+             res.send(err);
+         }
+         else {
+             res.render('company/companyAdd', {'company': result});
+         }
+     });
+ });
 
 // insert a company record
 router.get('/insert', function(req, res){
@@ -52,9 +52,9 @@ router.get('/insert', function(req, res){
     if(req.query.company_name == null) {
         res.send('company Name must be provided.');
     }
-    else if(req.query.company_id == null) {
-        res.send('An company must be selected');
-    }
+    // else if(req.query.company_id == null) {
+    //      res.send('A company must be selected');
+    // }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
         company_dal.insert(req.query, function(err,result) {
