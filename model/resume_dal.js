@@ -23,7 +23,7 @@ exports.getById = function(resume_id, callback) {
 };
 
 exports.insert = function(params, callback) {
-    var query = 'INSERT INTO resume (resume_name, account_id) VALUES (?, ?)';
+    var query = 'INSERT INTO Resume (resume_name, account_id) VALUES (?, ?)';
 
     // the question marks in the sql query above will be replaced by the values of the
     // the data in queryData
@@ -36,7 +36,7 @@ exports.insert = function(params, callback) {
 }
 
 exports.delete = function(resume_id, callback) {
-    var query = 'DELETE FROM resume WHERE resume_id = ?';
+    var query = 'DELETE FROM Resume WHERE resume_id = ?';
     var queryData = [resume_id];
 
     connection.query(query, queryData, function(err, result) {

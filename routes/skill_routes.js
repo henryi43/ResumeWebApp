@@ -49,12 +49,12 @@ router.get('/add', function(req, res){
 // insert a skill record
 router.get('/insert', function(req, res){
     // simple validation
-    if(req.query.skill_name == null) {
+    if(req.query.name == null) {
         res.send('skill Name must be provided.');
     }
-    else if(req.query.description == null) {
-        res.send('An skill must be selected');
-    }
+    // else if(req.query.description == null) {
+    //     res.send('An skill must be selected');
+    // }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
         skill_dal.insert(req.query, function(err,result) {

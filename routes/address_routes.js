@@ -52,9 +52,9 @@ router.get('/insert', function(req, res){
     if(req.query.street == null) {
         res.send('address Name must be provided.');
     }
-    else if(req.query.zip_code == null) {
-        res.send('An address must be selected');
-    }
+    // else if(req.query.zip_code == null) {
+    //     res.send('An address must be selected');
+    // }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
         address_dal.insert(req.query, function(err,result) {

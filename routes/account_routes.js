@@ -49,12 +49,12 @@ router.get('/add', function(req, res){
 // insert a account record
 router.get('/insert', function(req, res){
     // simple validation
-    if(req.query.account_name == null) {
+    if(req.query.email == null) {
         res.send('account Name must be provided.');
     }
-    else if(req.query.account_id == null) {
-        res.send('An account must be selected');
-    }
+    // else if(req.query.account_id == null) {
+    //     res.send('An account must be selected');
+    // }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
         account_dal.insert(req.query, function(err,result) {
