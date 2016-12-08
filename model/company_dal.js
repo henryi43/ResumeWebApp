@@ -7,11 +7,11 @@ var connection = mysql.createConnection(db.config);
 /*
  create or replace view company_view as
  select s.*, a.street, a.zipcode from company s
- join address a on a.address_id = s.address_id;
+ join Address a on a.address_id = s.address_id;
  */
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM company;';
+    var query = 'SELECT * FROM Company;';
 
     connection.query(query, function(err, result) {
         callback(err, result);
@@ -20,8 +20,8 @@ exports.getAll = function(callback) {
 
 exports.getById = function(company_id, callback) {
     var query = 'SELECT c.*, a.street, a.zipcode FROM Company c ' +
-        'LEFT JOIN company_address ca on ca.company_id = c.company_id ' +
-        'LEFT JOIN address a on a.address_id = ca.address_id ' +
+        'LEFT JOIN Company_address ca on ca.company_id = c.company_id ' +
+        'LEFT JOIN Address a on a.address_id = ca.address_id ' +
         'WHERE c.company_id = ?';
     var queryData = [company_id];
     console.log(query);
@@ -45,7 +45,7 @@ exports.insert = function(params, callback) {
         var company_id = result.insertId;
 
         // NOTE THAT THERE IS ONLY ONE QUESTION MARK IN VALUES ?
-        var query = 'INSERT INTO company_address (company_id, address_id) VALUES ?';
+        var query = 'INSERT INTO Company_address (company_id, address_id) VALUES ?';
 
         // TO BULK INSERT RECORDS WE CREATE A MULTIDIMENSIONAL ARRAY OF THE VALUES
         var companyAddressData = [];
@@ -74,7 +74,7 @@ exports.delete = function(company_id, callback) {
 //declare the function so it can be used locally
 var companyAddressInsert = function(company_id, addressIdArray, callback){
     // NOTE THAT THERE IS ONLY ONE QUESTION MARK IN VALUES ?
-    var query = 'INSERT INTO company_address (company_id, address_id) VALUES ?';
+    var query = 'INSERT INTO Company_address (company_id, address_id) VALUES ?';
 
     // TO BULK INSERT RECORDS WE CREATE A MULTIDIMENSIONAL ARRAY OF THE VALUES
     var companyAddressData = [];
@@ -90,7 +90,7 @@ module.exports.companyAddressInsert = companyAddressInsert;
 
 //declare the function so it can be used locally
 var companyAddressDeleteAll = function(company_id, callback){
-    var query = 'DELETE FROM company_address WHERE company_id = ?';
+    var query = 'DELETE FROM Company_address WHERE company_id = ?';
     var queryData = [company_id];
 
     connection.query(query, queryData, function(err, result) {
@@ -127,9 +127,9 @@ exports.update = function(params, callback) {
  DELIMITER //
  CREATE PROCEDURE company_getinfo (_company_id int)
  BEGIN
- SELECT * FROM company WHERE company_id = _company_id;
- SELECT a.*, s.company_id FROM address a
- LEFT JOIN company_address s on s.address_id = a.address_id AND company_id = _company_id
+ SELECT * FROM Company WHERE company_id = _company_id;
+ SELECT a.*, s.company_id FROM Address a
+ LEFT JOIN Company_address s on s.address_id = a.address_id AND company_id = _company_id
  ORDER BY a.street, a.zipcode;
  END //
  DELIMITER ;
